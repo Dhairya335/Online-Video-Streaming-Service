@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'normalize.css'; 
+import { GlobalStyles } from './global-styles.js';
+import { firebase } from './lib/firebase.prod';
+import { FirebaseContext } from './context/firebase.js';
+import { AuthProvider } from './context/AuthProvider.js';
+import App from './app';
+import Favicon from "./netflix_logo_icon_170919.png";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <FirebaseContext.Provider value = {{ firebase }}>
+        <GlobalStyles/>
+        <App> 
+          <Favicon url="C:/Web development/Netflix_Clone_react/netflix/src/netflix_logo_icon_170919.png"></Favicon>
+        </App>
+        
+      </FirebaseContext.Provider>
+    </AuthProvider>
+      
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
