@@ -1,0 +1,18 @@
+apiVersion: v1                 # Specifies the API version for the resource. 'v1' is used for Services.
+kind: Service                  # Defines the kind of resource. Here, it's a Service.
+metadata:
+  name: netflix-clone-service   # The name of the Service. This should be unique within the namespace.
+  namespace: netflix-clone
+  labels:
+    app: netflix-clone          # A label applied to the Service to identify the application.
+spec:
+  selector:
+    app: netflix-clone          # Selector to match pods based on the label. The Service will route traffic to pods with this label.
+  ports:
+  - protocol: TCP              # The protocol used by the Service. TCP is the default.
+    port: 3000                 # The port exposed by the Service. Clients will use this port to connect.
+    targetPort: 3000           # The port that the Service forwards traffic to on the container.
+      #    nodePort: 31000            # There is some range for this
+  type: NodePort               # The type of Service (ClusterIP, NodePort, LoadBalancer, etc.). Determines how the Service is exposed.
+
+
