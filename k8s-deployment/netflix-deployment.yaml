@@ -6,7 +6,7 @@ metadata:
   labels:
     app: netflix-clone          # A label applied to the Deployment to identify the application.
 spec:
-  replicas: 2                  # The number of pod replicas that the Deployment should maintain at all times.
+  replicas: 3                   # The number of pod replicas that the Deployment should maintain at all times.
   selector:
     matchLabels:
       app: netflix-clone        # Selector to match pods based on the label. The Deployment will manage all pods with this label.
